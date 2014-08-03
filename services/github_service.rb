@@ -10,8 +10,11 @@ class GithubService
     NullOrganization.new
   end
 
-  def parsed_response(response)
-    JSON.parse(response.body)
-  end
+  private
 
+  def parsed_response(response)
+    JSON.parse(response)
+  rescue
+    []
+  end
 end
