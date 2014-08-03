@@ -8,7 +8,7 @@ class FileHandler
     @filename = filename
   end
 
-  def write data
+  def write(data)
     CSV.open(@filename, "wb") do |csv|
       csv << headers
       data.each do |org|
