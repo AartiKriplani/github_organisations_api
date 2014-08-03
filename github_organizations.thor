@@ -9,7 +9,7 @@ class GithubOrganizations < Thor
   desc 'fetch_data ORGANIZATION_NAMES', "Fetch organization's data from github"
 
   def fetch_data(*organization_names)
-    Outputter.new.output(GithubService.new.get_organizations organization_names)
+    Outputter.output(GithubService.new.get_organizations organization_names)
   end
 
 end
