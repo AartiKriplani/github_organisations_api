@@ -9,7 +9,7 @@ class ConsoleHandler
 
   def write(data)
     rows = data.inject([]){ |r, row| r+=row.to_csv }
-    table = Terminal::Table.new :rows => rows
+    table = Terminal::Table.new :title => "Github repositories for organizations", :headings => @headers, :rows => rows
     puts table
   end
 
