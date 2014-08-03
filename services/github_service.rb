@@ -14,7 +14,7 @@ class GithubService
 
   def parsed_response(response)
     JSON.parse(response.body)
-  rescue
+  rescue JSON::ParseError
     []
   end
 end
