@@ -15,7 +15,7 @@ class GithubOrganizations < Thor
 	end		
 
 	
-	desc 'fetch_data ORGS',"Fetch organization's data from github"
+	desc 'fetch_data ORGANIZATION_NAMES',"Fetch organization's data from github"
 	def fetch_data(*organization_names)
 		organizations = organization_names.map do |organization_name|
 			@github_service.get_organization organization_name
