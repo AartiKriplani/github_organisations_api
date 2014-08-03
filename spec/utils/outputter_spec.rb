@@ -15,21 +15,26 @@ describe Outputter do
   end
 
   describe '#output' do
+
+    let(:org_1) { double('Organization', to_csv: [["Org1"]]) }
+    let(:org_2) { double('Organization', to_csv: [["Org2"]]) }
+
     before(:each) do
-      allow(Outputter).to receive(:write_to_file)
-      allow(Outputter).to receive(:write_to_console)
+      allow(CSV).to receive(:open)
+      allow_any_instance_of(Terminal::Table).to receive(:to_s).and_return("tested")
     end
 
-    it 'writes to file' do
-      organizations = [NullOrganization.new]
-      expect(Outputter).to receive(:write_to_file).with(organizations)
+    it "writes multiple organization to console" do
+      organizations = [org_1,org_2]
+
+      expect(Terminal::Table).to receive(:new).with(
+        :title => 'Github repositories for organizations', 
+        :headings => ['organization', 'repo', 'repo language'], 
+        :rows => [["Org1"],["Org2"]]).and_return("org_data")
+      expect(Outputter).to receive(:puts).with("org_data")
+      
       Outputter.output(organizations)
     end
 
-    it 'writes to console' do
-      organizations = [NullOrganization.new]
-      expect(Outputter).to receive(:write_to_console).with(organizations)
-      Outputter.output(organizations)
-    end
   end
 end
