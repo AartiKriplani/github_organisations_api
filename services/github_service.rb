@@ -10,7 +10,7 @@ class GithubService
   end
 
   def get_organization(org_name)
-    response = @github_api["/#{org_name}/repos"].get
+    response = @github_api["/#{org_name}/repos"].get{|response, request, result| response }
     return Organization.new(org_name, parsed_response(response)) if response.code == 200
     NullOrganization.new
   end
