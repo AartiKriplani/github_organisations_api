@@ -6,7 +6,7 @@ class Organization
 
   def initialize(name, repos_data)
     @name = name
-    @repositories = repos_data.map {|repo_data| Repository.new repo_data}
+    @repositories = repos_data.map { |repo_data| Repository.new repo_data }
   end
 
   def to_s
@@ -18,8 +18,8 @@ class Organization
   def to_csv
     @repositories.map do |repo|
       [
-        name, 
-        repo.name, 
+        name,
+        repo.name,
         repo.language
       ]
     end

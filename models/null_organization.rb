@@ -4,6 +4,6 @@ class NullOrganization
   end
 
   def to_csv
-    [["","",""]]
+    [['', '', '']]
   end
 end

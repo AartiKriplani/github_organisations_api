@@ -4,14 +4,17 @@ require './models/null_organization'
 
 class GithubService
 
-  def get_org(org_name)
-    response = RestClient.get("https://api.github.com/orgs/#{org_name}/repos")
+  def get_organization(org_name)
+    response = RestClient.get "https://api.github.com/orgs/#{org_name}/repos"
     if response.code == 200
-      orgs_data = JSON.parse(response.body)
-      Organization.new(org_name, orgs_data)
+      Organization.new(org_name, parsed_response(response))
     else
       NullOrganization.new
     end
+  end
+
+  def parsed_response(response)
+    JSON.parse(response.body)
   end
 
 end
