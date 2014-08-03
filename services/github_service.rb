@@ -4,11 +4,12 @@ require './models/null_organization'
 
 class GithubService
 
+  def initialize
+    @github_api = RestClient::Resource.new("https://api.github.com/orgs", :verify_ssl => OpenSSL::SSL::VERIFY_NONE)
+  end
+
   def get_organization(org_name)
-    response = RestClient::Request.execute(:verify_ssl => OpenSSL::SSL::VERIFY_NONE, 
-      :url => "https://api.github.com/orgs/#{org_name}/repos", 
-      :method => :get,
-      :verify_ssl => OpenSSL::SSL::VERIFY_NONE)
+    response = @github_api["/#{org_name}/repos"].get
     return Organization.new(org_name, parsed_response(response)) if response.code == 200
     NullOrganization.new
   end
