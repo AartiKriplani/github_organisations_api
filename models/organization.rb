@@ -10,13 +10,13 @@ class Organization
   end
 
   def to_s
-    @repositories.map do |repo|
+    repositories.map do |repo|
       "#{name}\t#{repo.name}\t#{repo.language}"
     end.join("\n")
   end
 
   def to_csv
-    @repositories.map do |repo|
+    repositories.map do |repo|
       [
         name,
         repo.name,
