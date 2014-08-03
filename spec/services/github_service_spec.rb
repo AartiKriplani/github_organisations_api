@@ -2,9 +2,18 @@ require_relative '../../services/github_service'
 
 describe GithubService do
   describe '#get_organization' do
-    let(:response) { double('Response', code: 404) }
+    let(:response) { double('Response', code: 200, body: [].to_json) }
     before do
       allow_any_instance_of(RestClient::Resource).to receive(:get).and_return(response)
+    end
+
+    it 'returns organizations for the given organization names' do
+      org_names = ['github', 'something else']
+      organizations = GithubService.new.get_organizations(org_names)
+
+      expect(organizations.count).to eq 2
+      expect(organizations.first).to be_a_kind_of(Organization)
+      expect(organizations.last).to be_a_kind_of(Organization)
     end
 
     context 'when successful' do
@@ -15,9 +24,9 @@ describe GithubService do
         expected_organization = Organization.new(org_name, JSON.parse(response_body))
         expect(Organization).to receive(:new).with(org_name, JSON.parse(response_body)).and_return(expected_organization)
 
-        organization = GithubService.new.get_organization(org_name)
+        organizations = GithubService.new.get_organizations([org_name])
 
-        expect(organization).to eq expected_organization
+        expect(organizations.first).to eq expected_organization
       end
     end
 
@@ -28,9 +37,9 @@ describe GithubService do
         expected_organization = NullOrganization.new
         expect(NullOrganization).to receive(:new).and_return(expected_organization)
 
-        organization = GithubService.new.get_organization(org_name)
+        organizations = GithubService.new.get_organizations([org_name])
 
-        expect(organization).to eq expected_organization
+        expect(organizations.first).to eq expected_organization
       end
     end
 
@@ -42,7 +51,7 @@ describe GithubService do
       expect(rest_client_resource).to receive(:[]).with("/#{org_name}/repos").and_return(rest_client_resource)
       expect(rest_client_resource).to receive(:get).and_return(response)
 
-      GithubService.new.get_organization(org_name)
+      GithubService.new.get_organizations([org_name])
     end
   end
 end
