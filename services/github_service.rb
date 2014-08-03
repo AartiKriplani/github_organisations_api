@@ -13,7 +13,7 @@ class GithubService
   private
 
   def parsed_response(response)
-    JSON.parse(response)
+    JSON.parse(response.body)
   rescue
     []
   end
