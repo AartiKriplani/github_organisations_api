@@ -3,9 +3,10 @@ require './models/organization'
 require './models/null_organization'
 
 class GithubService
+  GITHUB_API_URL = 'https://api.github.com/orgs'
 
   def initialize
-    @github_api = RestClient::Resource.new("https://api.github.com/orgs", :verify_ssl => OpenSSL::SSL::VERIFY_NONE)
+    @github_api = RestClient::Resource.new(GITHUB_API_URL, :verify_ssl => OpenSSL::SSL::VERIFY_NONE)
   end
 
   def get_organization(org_name)
