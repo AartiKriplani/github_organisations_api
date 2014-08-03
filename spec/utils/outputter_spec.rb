@@ -16,12 +16,20 @@ describe Outputter do
 
   describe '#output' do
 
-    let(:org_1) { double('Organization', to_csv: [['Org1']]) }
-    let(:org_2) { double('Organization', to_csv: [['Org2']]) }
+    let(:org_1) { double('Organization', to_csv: [['Org1','repo1']]) }
+    let(:org_2) { double('Organization', to_csv: [['Org2','repo2']]) }
+    let(:mock_csv) { double('csv') }
 
     before(:each) do
-      allow(CSV).to receive(:open)
-      allow_any_instance_of(Terminal::Table).to receive(:to_s).and_return('tested')
+      @csv_rows = []
+      allow(CSV).to receive(:open).and_yield(@csv_rows)
+      allow(Outputter).to receive(:puts)
+    end
+
+    it "writes repositories to csv file" do
+      organizations = [org_1,org_2]
+      Outputter.output(organizations)
+      expect(@csv_rows).to eq([["organization", "repo", "repo language"], ["Org1", "repo1"], ["Org2", "repo2"]])
     end
 
     it 'writes multiple organization to console' do
@@ -30,7 +38,7 @@ describe Outputter do
       expect(Terminal::Table).to receive(:new).with(
         :title => 'Github repositories for organizations', 
         :headings => ['organization', 'repo', 'repo language'], 
-        :rows => [['Org1'],['Org2']]).and_return('org_data')
+        :rows => [['Org1','repo1'],['Org2','repo2']]).and_return('org_data')
       expect(Outputter).to receive(:puts).with('org_data')
       
       Outputter.output(organizations)
