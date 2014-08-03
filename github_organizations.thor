@@ -1,7 +1,5 @@
 require 'thor'
 require './services/github_service'
-require './utils/file_handler'
-require './utils/console_handler'
 require './utils/outputter'
 
 class GithubOrganizations < Thor
