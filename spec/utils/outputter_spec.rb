@@ -21,7 +21,7 @@ describe Outputter do
 
     before(:each) do
       allow(CSV).to receive(:open)
-      allow_any_instance_of(Terminal::Table).to receive(:to_s).and_return("tested")
+      allow_any_instance_of(Terminal::Table).to receive(:to_s).and_return('tested')
     end
 
     it 'writes multiple organization to console' do
