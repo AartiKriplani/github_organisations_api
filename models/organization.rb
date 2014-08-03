@@ -1,6 +1,7 @@
 require './models/repository'
 
 class Organization
+
   attr_accessor :name, :repositories
 
   def initialize(name, repos_data)

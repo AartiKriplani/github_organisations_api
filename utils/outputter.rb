@@ -2,6 +2,7 @@ require './utils/file_handler'
 require './utils/console_handler'
 
 class Outputter
+
   extend FileHandler
   extend ConsoleHandler
 
@@ -17,4 +18,5 @@ class Outputter
   def self.filename
     "org_data_#{Time.now.to_i}.csv"
   end
+
 end

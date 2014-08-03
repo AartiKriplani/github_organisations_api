@@ -1,6 +1,7 @@
 require 'csv'
 
 module FileHandler
+
   def write_to_file(data)
     CSV.open(filename, 'wb') do |csv|
       csv << headers
