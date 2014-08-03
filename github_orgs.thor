@@ -13,7 +13,7 @@ class GithubOrgs < Thor
 		console_handler = ConsoleHandler.new(headers)
 		
 		orgs_data = orgs.map do |org_name|
-			github_service.get_org org_name
+			github_service.get_organization org_name
 		end
 
 		console_handler.write(orgs_data)
