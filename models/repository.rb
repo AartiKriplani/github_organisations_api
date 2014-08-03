@@ -1,5 +1,4 @@
-class Repository
-  
+class Repository  
   attr_accessor :name, :language
 
   def initialize(data)

@@ -1,6 +1,7 @@
-class NullOrganization
-  def to_s
-    "\n"
+require './models/organization'
+
+class NullOrganization < Organization
+  def initialize
   end
 
   def to_csv
