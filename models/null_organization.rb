@@ -5,7 +5,7 @@ class NullOrganization < Organization
   def initialize
   end
 
-  def to_csv
+  def to_csv_rows
     [['', '', '']]
   end
 

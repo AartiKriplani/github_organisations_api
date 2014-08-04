@@ -17,8 +17,8 @@ describe Outputter do
 
   describe '#output' do
 
-    let(:org_1) { double('Organization', to_csv: [['Org1','repo1']]) }
-    let(:org_2) { double('Organization', to_csv: [['Org2','repo2']]) }
+    let(:org_1) { double('Organization', to_csv_rows: [['Org1','repo1']]) }
+    let(:org_2) { double('Organization', to_csv_rows: [['Org2','repo2']]) }
     let(:mock_csv) { double('csv') }
 
     before(:each) do

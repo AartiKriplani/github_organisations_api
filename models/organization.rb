@@ -9,7 +9,7 @@ class Organization
     @repositories = repos_data.map { |repo_data| Repository.new repo_data }
   end
 
-  def to_csv
+  def to_csv_rows
     repositories.map do |repo|
       [
         name,
