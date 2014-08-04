@@ -1,0 +1,171 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/orgs/goderma/repos
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sun, 03 Aug 2014 10:51:38 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '42'
+      X-Ratelimit-Reset:
+      - '1407063813'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Etag:
+      - '"d79998baa1646d1dd97e762039f04f5d"'
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - '*'
+      X-Github-Request-Id:
+      - 2A680E63:6942:9538382:53DE1438
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - a1d8c69b807c8e21f06cad9da377d1b0
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA+2ZXW+jOBSG/wu3m9SQJmmLNJr5ByOterWrVeSAA1YBI9uk
+        alH/+x7bfMUw+aiZ1V70ZiYlPg8v9rE5583ftUdjLwyetv4meNguvALnxAu9
+        mEWScVzSJa/2b97CO1RZtmu+TFhMeI7RaBB7LQj3wtrLWEILwDQjIV7dZX2/
+        CR4f4Sb4iCXmu4pnMCaVshQhQuaiuEuoTKt9JQiPWCFJIe8ilqMKNdHfj98C
+        4CW8gShwAeIWnoUraYMy8cATqNeTyjyzBJgb69H9uAPLMvYKsbbaM3jUBamJ
+        0wBaJLcDIKhGTKYEpgrkf6jHpkLeJEUH1Ej9t6OxQgiYek7iW+Q0ISBGLfBH
+        jTgpmWZVexFxWkrKiptknQQCiPEEF/Qd3wyCQAHxStBNAnQABJIjZNhNkSai
+        RiWnRxy9qWngJCL0CHN6O80KBZh8K9UO/DmYETXTVJIdjnO1rQ44E+Rj4WkF
+        EgbrCwvYSVfk9HjXxqRbQ7gv3OvA+EsHPbur9Cy2u2VMVqALc3uOAPsI4kHQ
+        C3lzwajwGsG/zQ6IYEviPRxvcMS5cE84NRr+qbJCEpy74HU8cFLGnGZRxwOH
+        ClGRq1L07KJojEDtNiiqfG/OpmuS/yzZAEApFoImBSEus9cxatQennuOiyh1
+        oraIGplPep1x4iJUhQNln7G9CwbeXkgzaiRSbN4VcueoTUEV4oTJycFVqEJ0
+        TMndVlqLVIyOCO8rCYvuorJFoLqZzQwXSYUTJ2jHgPVW79QEv1+sLM7umB4C
+        RFUucbqvnE+1HqN0mlc87HGn6ewpPVOXDefrkPNPP6g+9PPnOb30Lj8LbAgn
+        2e5OVflpk9XflwuPi2IVokb9EWyO+AbuMLPNGd+qRHV/i6Yod0mGFoHqP0os
+        U3VWwZ1KzImD5IaA6j2G4uju7q5OCdYFb06427Y1ACBhHqVQ5zmorFsElDY5
+        lrqUPiiRMZTWGcOxy7x2DOCZFXRQagDD5Cqhy3KRp+OHwJxmREhWOJ2pPWSI
+        LpikBxpd00+c3WQnnPq7oEVEFhi6TchWSSMK+QtdmlpAqCiJ0/QYADwEdOCm
+        qcgIpLLLjHNiEDUyrV/ECfQL8Q5LKPRXfrBe+pul//TsP4abx3B1/xc8R1XG
+        9piHpb99DlbhOgh9PaasRHqKeViugudgGwJp9aiGwKHXJB98gu5+3Fxb7YJq
+        1iFOiLSP+9FHhdOmQxMVZZBFVrJffcej/Q66GAk6U5aTEsqB1nwQ9B0+rzdP
+        J2/2iFUFzLW/8F6xhNIT3qH9pbYagLX405gsKRY7s++8UPJKtXRwpd/Wg4uv
+        9IW2g0yb1YNzyjlr7BVjjbCSFA25FRCYPk9odYPvwQzq1eovY3LAVSZ3puIF
+        tTkWEnweyAOwgUCvav6V6zNsT02SdF2k2vtG7sfHwnhOKx8cne1m3XlOzQov
+        TekF+CnPaTToy3MyZtyX56Q8xHOu3Jfn1Pi2/73nNNq1s3lOI/LNntMp4dOe
+        k4WZzXOyuHN7Thb+056TxXH1nCzcjJ6TRXbznCzYTJ6TRZ3Dc7KX+ZOek4VR
+        na275zQBdfacJphuntME0N1zsqDzeE4W1N1zGqtsjCso0T7rOVnMIUY1AZ/z
+        nGyhs3hO01BtXennv9lzGj26Jrh6ThP5OYfnNCF2Ns/JYs/sOY2U69+ShZvn
+        NIJq12oWz8lCu3hOFmpez8mCu3lOkyng5DlZxJk8J3txOuNqFs/Jov9Oz8m6
+        1Ryek4W8wnPaLv175Tmtt+Eq+IXnpMcE63C1BWtq2nPqhjyEvn+l53Qq9lrP
+        aTLqSs9pMlZc4zmdRv7Scwq24NEMfk36H3tOINT8pD/ynAYO2W/xnP75F/pu
+        hWjpJAAA
+    http_version: 
+  recorded_at: Sun, 03 Aug 2014 10:51:36 GMT
+- request:
+    method: get
+    uri: https://api.github.com/orgs/non-existent/repos
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sun, 03 Aug 2014 10:51:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 404 Not Found
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '41'
+      X-Ratelimit-Reset:
+      - '1407063813'
+      X-Github-Media-Type:
+      - github.v3
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - '*'
+      X-Github-Request-Id:
+      - 2A680E63:6941:7D075CB:53DE143B
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+      X-Content-Type-Options:
+      - nosniff
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA6tWyk0tLk5MT1WyUvLLL1Fwyy/NS1HSUUrJTy7NTc0rSSzJ
+        zM+LLy3KAcpnlJQUFFvp66eklqXm5BekFumlZ5ZklCbpJefn6pcZK9UCAP6T
+        TUJNAAAA
+    http_version: 
+  recorded_at: Sun, 03 Aug 2014 10:51:38 GMT
+recorded_with: VCR 2.9.2

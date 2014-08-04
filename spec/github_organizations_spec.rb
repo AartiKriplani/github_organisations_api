@@ -1,14 +1,46 @@
+require 'vcr'
 require 'thor'
+require 'timecop'
+
 load File.dirname(__FILE__) + '/../github_organizations.thor'
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'fixtures/vcr_cassettes'
+  config.hook_into :webmock
+end
+
 
 describe GithubOrganizations do
   describe '#fetch_data' do
-    it 'does it' do
-      original_stdout = $stdout
-      $stdout = fake = StringIO.new
-      GithubOrganizations.new.fetch_data('github', 'something')
-      $stdout = original_stdout
-      expect(fake.string).to eq "+--------------+----------------------------+---------------+\n|           Github repositories for organizations           |\n+--------------+----------------------------+---------------+\n| organization | repo                       | repo language |\n+--------------+----------------------------+---------------+\n| github       | media                      |               |\n| github       | github-services            | Ruby          |\n| github       | albino                     | Ruby          |\n| github       | hubahuba                   | Ruby          |\n| github       | jquery-hotkeys             |               |\n| github       | jquery-relatize_date       |               |\n| github       | request_timer              | Ruby          |\n| github       | will_paginate_with_hotkeys | Ruby          |\n| github       | gem-builder                | Ruby          |\n| github       | learn.github.com           | CSS           |\n| github       | safegem                    | Ruby          |\n| github       | develop.github.com         | JavaScript    |\n| github       | markup                     | Ruby          |\n| github       | hub                        | Ruby          |\n| github       | upload                     | Ruby          |\n| github       | github-services            | Ruby          |\n| github       | gitcasts                   | CSS           |\n| github       | rails                      | Ruby          |\n| github       | gitignore                  |               |\n| github       | dmca                       |               |\n| github       | pong                       |               |\n| github       | pycon2011                  | Python        |\n| github       | email_reply_parser         | Ruby          |\n| github       | developer.github.com       | Ruby          |\n| github       | linguist                   | Ruby          |\n| github       | ghterm                     | JavaScript    |\n| github       | testrepo                   | C             |\n| github       | gollum                     | JavaScript    |\n| github       | node-statsd                | JavaScript    |\n| github       | maven-plugins              | Java          |\n\n+--------------+----------------------------+---------------+\n"
+    before do
+      Timecop.freeze(Time.local(2014,8,3,12,0,0))
+    end
+
+    after do
+      Timecop.return
+      orgs_file = File.dirname(__FILE__) + '/../org_data_1407047400.csv'
+      File.delete(orgs_file) if File.exist?(orgs_file)
+    end
+
+    it 'writes data to console for organization that exists and empty line for non existent orgs' do
+      VCR.use_cassette('successful_with_missing_org') do
+        original_stdout = $stdout
+        $stdout = fake = StringIO.new
+        GithubOrganizations.new.fetch_data('goderma', 'non-existent')
+        $stdout = original_stdout
+        expect(fake.string).to eq "+--------------+----------------+---------------+\n|     Github repositories for organizations     |\n+--------------+----------------+---------------+\n| organization | repo           | repo language |\n+--------------+----------------+---------------+\n| goderma      | doctorapi-ruby | Ruby          |\n| goderma      | goderma-status | Ruby          |\n\n+--------------+----------------+---------------+\n"
+      end
+    end
+
+    it 'writes data to file for organization that exists and empty line for non existent orgs' do
+      VCR.use_cassette('successful_with_missing_org') do
+        original_stdout = $stdout
+        $stdout = StringIO.new
+        GithubOrganizations.new.fetch_data('goderma', 'non-existent')
+        $stdout = original_stdout
+        csv_file = CSV.read("org_data_1407047400.csv")
+        expect(csv_file).to eq [["organization", "repo", "repo language"], ["goderma", "doctorapi-ruby", "Ruby"], ["goderma", "goderma-status", "Ruby"], ["", "", ""]]
+      end
     end
   end
 end

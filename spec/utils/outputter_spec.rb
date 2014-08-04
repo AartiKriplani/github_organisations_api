@@ -1,4 +1,5 @@
 require_relative '../../utils/outputter'
+require 'timecop'
 
 describe Outputter do
   it 'has headers to output' do
